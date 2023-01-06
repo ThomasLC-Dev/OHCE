@@ -3,6 +3,7 @@ package fr.thomas.ohce;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -60,10 +61,12 @@ public class MainTest {
         String hello = "Good evening";
         String bye = "Have a good evening";
         String wellSaid = "Well said";
+        List<String> words = List.of(hello, bye, wellSaid);
         DetectionPalindrome detectionPalindrome1 = new DetectionPalindrome("en", 20);
-        assertTrue(detectionPalindrome1.traiter("radar").contains(hello));
-        assertTrue(detectionPalindrome1.traiter("radar").contains(bye));
-        assertTrue(detectionPalindrome1.traiter("radar").contains(wellSaid));
+
+        for(String word : words){
+            assertTrue(detectionPalindrome1.traiter("radar").contains(word));
+        }
     }
 
     @Test
@@ -71,10 +74,16 @@ public class MainTest {
         String hello = "Bonjour";
         String bye = "Bonne journée";
         String wellSaid = "Bien dit";
+        List<String> words = List.of(hello, bye, wellSaid);
         DetectionPalindrome detectionPalindrome1 = new DetectionPalindrome("fr", 8);
-        assertTrue(detectionPalindrome1.traiter("test").contains(hello));
-        assertTrue(detectionPalindrome1.traiter("test").contains(bye));
-        assertFalse(detectionPalindrome1.traiter("test").contains(wellSaid));
+        for(String word : words){
+            if(words.get(words.size() - 1).equals(word)){
+                assertFalse(detectionPalindrome1.traiter("test").contains(word));
+            }
+            else{
+                assertTrue(detectionPalindrome1.traiter("test").contains(word));
+            }
+        }
     }
 
     @Test
@@ -83,11 +92,12 @@ public class MainTest {
         String hello = "Bonjour";
         String bye = "Bonne journée";
         String wellSaid = "Bien dit";
+        List<String> words = List.of(hello, bye, wellSaid);
         DetectionPalindrome detectionPalindrome = new DetectionPalindrome(Main.getSystemLanguage(), Main.getCurrentHour());
         String result = detectionPalindrome.traiter(motATester);
-        assertTrue(result.contains(hello));
-        assertTrue(result.contains(bye));
-        assertTrue(result.contains(wellSaid));
+        for(String word : words){
+            assertTrue(result.contains(word));
+        }
     }
 
     @Test
