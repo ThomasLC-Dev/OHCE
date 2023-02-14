@@ -12,12 +12,14 @@ public class Main {
         System.out.println(detectionPalindrome.traiter(scanner.nextLine()));
     }
 
+    // Récupérer l'heure actuelle du système
     public static int getCurrentHour(){
         Instant instant = Instant.now();
         LocalDateTime ldt = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
         return ldt.getHour();
     }
 
+    // Récupérer la langue du système
     public static String getSystemLanguage(){
         return Locale.getDefault().getLanguage();
     }

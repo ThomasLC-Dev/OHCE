@@ -12,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MainTest {
 
     DetectionPalindrome detectionPalindrome;
-
     @BeforeEach
     public void init(){
         detectionPalindrome = new DetectionPalindrome(Main.getSystemLanguage(), Main.getCurrentHour());
     }
 
+    // Test de l'affichage de "Bonjour"
     @Test
     public void testBonjour(){
         String result = "";
@@ -31,6 +31,7 @@ public class MainTest {
         assertTrue(detectionPalindrome.traiter("Test").startsWith(result));
     }
 
+    // Test de l'affichage de "Au revoir"
     @Test
     public void testAuRevoir(){
         String result = "";
@@ -44,18 +45,21 @@ public class MainTest {
         assertTrue(detectionPalindrome.traiter("Test").endsWith(result));
     }
 
+    // Test de l'inversion
     @Test
     public void testMotInverse(){
         String result = "esarhp";
         assertTrue(detectionPalindrome.traiter("phrase").contains(result));
     }
 
+    // Test de l'affichage de "Bien dit !"
     @Test
     public void testPalindrome(){
         String result = detectionPalindrome.sayIsPalindrome();
         assertTrue(detectionPalindrome.traiter("radar").contains(result));
     }
 
+    // Cas de test N°1
     @Test
     public void testPalindromeAnglaisSoir(){
         String hello = "Good evening";
@@ -69,6 +73,7 @@ public class MainTest {
         }
     }
 
+    // Cas de test N°2
     @Test
     public void testNonPalindromeFrancaisMatin(){
         String hello = "Bonjour";
@@ -86,6 +91,7 @@ public class MainTest {
         }
     }
 
+    // Cas de test N°3
     @Test
     public void testReal(){
         String motATester = "radar";
@@ -100,6 +106,7 @@ public class MainTest {
         }
     }
 
+    // Test de la non présence de saut de ligne
     @Test
     public void noNewLine(){
         assertFalse(detectionPalindrome.traiter("Test").contains("\n"));

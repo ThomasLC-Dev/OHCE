@@ -43,12 +43,14 @@ public class DetectionPalindrome {
         return result;
     }
 
+    // Inverser le mot
     public String revertWord(String word){
         String[] splitWord = word.split("");
         Collections.reverse(Arrays.asList(splitWord));
         return String.join("", splitWord);
     }
 
+    // Retourner Bonjour en fonction du temps et de la langue
     public String sayHello(){
         if(this.hour < 18){
             return (this.language.equals(LANGUAGE_FR)) ? "Bonjour" : "Hello";
@@ -57,6 +59,8 @@ public class DetectionPalindrome {
             return (this.language.equals(LANGUAGE_FR)) ? "Bonsoir" : "Good evening";
         }
     }
+
+    // Retourner Au revoir en fonction du temps et de la langue
     public String sayBye(){
         if(this.hour < 18){
             return (this.language.equals(LANGUAGE_FR)) ? "Bonne journée" : "Have a good day";
@@ -66,6 +70,7 @@ public class DetectionPalindrome {
         }
     }
 
+    // Retourner Bien dit en fonction de la langue
     public String sayIsPalindrome(){
         return (this.language.equals(LANGUAGE_FR)) ? "Bien dit !" : "Well said !";
     }
